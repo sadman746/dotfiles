@@ -1,0 +1,25 @@
+# Git ignore per dotfiles
+
+# Backup file
+*.backup.*
+*.bak
+*~
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Neovim
+.config/nvim/.luarc.json
+.config/nvim/lazy-lock.json
+
+# WezTerm
+.wezterm.lua.bak
+
+# Logs
+*.log
