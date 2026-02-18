@@ -20,6 +20,7 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 alias ssh="ssh"
 alias sadhost="ssh sad@192.168.1.10"
+alias sadvps="ssh ubuntu@130.110.1.225"
 
 # history setup
 HISTFILE=$HOME/.zhistory
