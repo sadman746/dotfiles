@@ -9,21 +9,22 @@ if [ "$#" -lt 1 ]; then
 fi
 
 REPO_URL="${REPO_URL:-https://github.com/sadman746/dotfiles.git}"
-DOTFILES_PATH="${DOTFILES_PATH:-\$HOME/.dotfiles}"
+DOTFILES_PATH="${DOTFILES_PATH:-.dotfiles}"
 
 for host in "$@"; do
   echo "--- Deploy su $host ---"
   ssh "$host" "
     set -euo pipefail
-    if [ -d \"$DOTFILES_PATH/.git\" ]; then
-      git -C \"$DOTFILES_PATH\" pull --ff-only
+    DOTFILES_DIR=\"\$HOME/$DOTFILES_PATH\"
+    if [ -d \"\$DOTFILES_DIR/.git\" ]; then
+      git -C \"\$DOTFILES_DIR\" pull --ff-only
     elif [ -d \"\$HOME/dotfiles/.git\" ]; then
-      mv \"\$HOME/dotfiles\" \"$DOTFILES_PATH\"
-      git -C \"$DOTFILES_PATH\" pull --ff-only
+      mv \"\$HOME/dotfiles\" \"\$DOTFILES_DIR\"
+      git -C \"\$DOTFILES_DIR\" pull --ff-only
     else
-      git clone \"$REPO_URL\" \"$DOTFILES_PATH\"
+      git clone \"$REPO_URL\" \"\$DOTFILES_DIR\"
     fi
-    DOTFILES_DIR=\"$DOTFILES_PATH\" bash \"$DOTFILES_PATH/server/bootstrap-ubuntu.sh\"
+    DOTFILES_DIR=\"\$DOTFILES_DIR\" bash \"\$DOTFILES_DIR/server/bootstrap-ubuntu.sh\"
   "
 done
 
