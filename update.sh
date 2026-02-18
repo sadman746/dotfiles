@@ -18,6 +18,7 @@ echo ""
 # Data per backup
 BACKUP_DATE=$(date +%Y%m%d_%H%M%S)
 BACKUP_DIR="$HOME/dotfiles-backup-$BACKUP_DATE"
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.dotfiles}"
 
 # Funzione per fare backup sicuro
 backup_file() {
@@ -44,11 +45,11 @@ backup_file "$HOME/.config/nvim"
 echo -e "${GREEN}✓ Backup completato${NC}"
 echo ""
 
-# Controlla se ~/dotfiles esiste già
-if [ -d "$HOME/dotfiles" ]; then
-    echo -e "${YELLOW}⚠️  Trovata directory ~/dotfiles esistente${NC}"
+# Controlla se ~/.dotfiles esiste già
+if [ -d "$DOTFILES_DIR" ]; then
+    echo -e "${YELLOW}⚠️  Trovata directory $DOTFILES_DIR esistente${NC}"
     echo "Aggiornamento con git pull..."
-    cd "$HOME/dotfiles"
+    cd "$DOTFILES_DIR"
     
     # Salva eventuali modifiche locali
     git stash
@@ -62,8 +63,7 @@ if [ -d "$HOME/dotfiles" ]; then
     echo -e "${GREEN}✓ Repository aggiornato${NC}"
 else
     echo -e "${BLUE}📥 Clonazione repository...${NC}"
-    cd "$HOME"
-    git clone https://github.com/sadman746/dotfiles.git
+    git clone https://github.com/sadman746/dotfiles.git "$DOTFILES_DIR"
     echo -e "${GREEN}✓ Repository clonato${NC}"
 fi
 
@@ -110,11 +110,11 @@ create_link() {
     echo -e "${GREEN}  ✓${NC} $dst"
 }
 
-create_link "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
-create_link "$HOME/dotfiles/.wezterm.lua" "$HOME/.wezterm.lua"
-create_link "$HOME/dotfiles/.p10k.zsh" "$HOME/.p10k.zsh"
-create_link "$HOME/dotfiles/.gitconfig" "$HOME/.gitconfig"
-create_link "$HOME/dotfiles/.config/nvim" "$HOME/.config/nvim"
+create_link "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
+create_link "$DOTFILES_DIR/.wezterm.lua" "$HOME/.wezterm.lua"
+create_link "$DOTFILES_DIR/.p10k.zsh" "$HOME/.p10k.zsh"
+create_link "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
+create_link "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
 
 echo ""
 echo -e "${GREEN}✅ Collegamenti creati con successo!${NC}"

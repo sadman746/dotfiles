@@ -8,16 +8,16 @@ Questa cartella contiene il setup minimale server-only:
 ## Setup rapido su nuovo server
 
 ```bash
-git clone https://github.com/sadman746/dotfiles.git ~/dotfiles
-bash ~/dotfiles/server/bootstrap-ubuntu.sh
+git clone https://github.com/sadman746/dotfiles.git ~/.dotfiles
+bash ~/.dotfiles/server/bootstrap-ubuntu.sh
 ```
 
 ## Aggiornare server gia esistente
 
 ```bash
-cd ~/dotfiles
+cd ~/.dotfiles
 git pull --ff-only
-bash ~/dotfiles/server/bootstrap-ubuntu.sh
+bash ~/.dotfiles/server/bootstrap-ubuntu.sh
 ```
 
 ## Deploy da Mac su piu server
@@ -25,7 +25,7 @@ bash ~/dotfiles/server/bootstrap-ubuntu.sh
 Dal Mac locale:
 
 ```bash
-cd ~/dotfiles
+cd ~/.dotfiles
 bash server/deploy.sh sad@192.168.1.10 sad@vps.example.com
 ```
 

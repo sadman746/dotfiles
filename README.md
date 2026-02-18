@@ -18,8 +18,8 @@ dotfiles/
 ## 🚀 Installazione Rapida
 
 ```bash
-git clone https://github.com/sadman746/dotfiles.git ~/dotfiles
-cd ~/dotfiles
+git clone https://github.com/sadman746/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 ./install.sh
 ```
 
@@ -41,7 +41,7 @@ cd ~/dotfiles
 ### Aggiornare configurazione
 
 ```bash
-cd ~/dotfiles
+cd ~/.dotfiles
 # Modifica i file
 nvim .zshrc  # o qualsiasi altro file
 git add .
@@ -52,7 +52,7 @@ git push
 ### Sincronizzare su altro Mac
 
 ```bash
-cd ~/dotfiles
+cd ~/.dotfiles
 git pull
 # I cambiamenti sono automaticamente attivi (symlink)
 ```
@@ -60,30 +60,30 @@ git pull
 ### Setup server Ubuntu (LAN/VPS)
 
 ```bash
-git clone https://github.com/sadman746/dotfiles.git ~/dotfiles
-bash ~/dotfiles/server/bootstrap-ubuntu.sh
+git clone https://github.com/sadman746/dotfiles.git ~/.dotfiles
+bash ~/.dotfiles/server/bootstrap-ubuntu.sh
 ```
 
 Per aggiornare un server gia configurato:
 
 ```bash
-cd ~/dotfiles
+cd ~/.dotfiles
 git pull --ff-only
-bash ~/dotfiles/server/bootstrap-ubuntu.sh
+bash ~/.dotfiles/server/bootstrap-ubuntu.sh
 ```
 
 Per aggiornare piu server dal Mac:
 
 ```bash
-cd ~/dotfiles
+cd ~/.dotfiles
 bash server/deploy.sh sad@192.168.1.10 sad@vps.example.com
 ```
 
 ## 📝 Note
 
 - I file sono gestiti tramite **symlink** (collegamenti simbolici)
-- La directory `~/dotfiles/` è il repository Git
-- I programmi cercano i config in `~/` ma trovano i symlink che puntano a `~/dotfiles/`
+- La directory `~/.dotfiles/` è il repository Git
+- I programmi cercano i config in `~/` ma trovano i symlink che puntano a `~/.dotfiles/`
 
 ## 📄 License
 
