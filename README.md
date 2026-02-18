@@ -57,6 +57,28 @@ git pull
 # I cambiamenti sono automaticamente attivi (symlink)
 ```
 
+### Setup server Ubuntu (LAN/VPS)
+
+```bash
+git clone https://github.com/sadman746/dotfiles.git ~/dotfiles
+bash ~/dotfiles/server/bootstrap-ubuntu.sh
+```
+
+Per aggiornare un server gia configurato:
+
+```bash
+cd ~/dotfiles
+git pull --ff-only
+bash ~/dotfiles/server/bootstrap-ubuntu.sh
+```
+
+Per aggiornare piu server dal Mac:
+
+```bash
+cd ~/dotfiles
+bash server/deploy.sh sad@192.168.1.10 sad@vps.example.com
+```
+
 ## 📝 Note
 
 - I file sono gestiti tramite **symlink** (collegamenti simbolici)
