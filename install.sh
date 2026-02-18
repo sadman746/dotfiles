@@ -14,13 +14,13 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # Directory dotfiles
-DOTFILES_DIR="$HOME/dotfiles"
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.dotfiles}"
 
 # Controllo se la directory esiste
 if [ ! -d "$DOTFILES_DIR" ]; then
     echo -e "${RED}❌ Errore: Directory $DOTFILES_DIR non trovata${NC}"
     echo "Clona prima il repository:"
-    echo "git clone https://github.com/sadman746/dotfiles.git ~/dotfiles"
+    echo "git clone https://github.com/sadman746/dotfiles.git ~/.dotfiles"
     exit 1
 fi
 

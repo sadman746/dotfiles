@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.dotfiles}"
 BACKUP_DIR="$HOME/.dotfiles-backups/$(date +%Y%m%d_%H%M%S)"
 P10K_DIR="$HOME/.local/share/powerlevel10k"
 
@@ -48,6 +48,11 @@ link_file() {
   ln -s "$src" "$dst"
   log "${GREEN}Link:${NC} $dst -> $src"
 }
+
+if [ ! -d "$DOTFILES_DIR" ] && [ -d "$HOME/dotfiles" ]; then
+  DOTFILES_DIR="$HOME/dotfiles"
+  log "${YELLOW}Uso path legacy temporaneo: $DOTFILES_DIR${NC}"
+fi
 
 if [ ! -d "$DOTFILES_DIR" ]; then
   log "${RED}Errore: directory dotfiles non trovata in $DOTFILES_DIR${NC}"
